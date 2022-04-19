@@ -12,6 +12,7 @@ typedef struct node {
 struct list_struct {
     NODE *front;
     NODE *back;
+    int n;
 };
 
 
@@ -88,14 +89,8 @@ NODE *p;
 }
 
 int lst_length(LIST *l) {
-NODE *p = l->front;
-int n=0;
-
-  while(p != NULL) {
-    n++;
-    p = p->next;
-  }
-  return n;
+    return l->n;
+ 
 }
 
 int lst_is_empty(LIST *l) {
@@ -351,8 +346,6 @@ LIST * lst_clone(LIST *a) {
 
 }
 
-
-
 /**
 *
 * function:  lst_from_array 
@@ -452,9 +445,6 @@ LIST * lst_prefix(LIST *lst, unsigned int k) {
   return NULL;
 
 }
-
-
-
 
 /**
 *

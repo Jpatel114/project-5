@@ -1,7 +1,12 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "sq.h"
+#define N 1000000
+#define J 500000
 
+
+ 
 /**
 * takes a full line of user input and 
 *   parses it.
@@ -90,13 +95,27 @@ char junk[128];
 }
 	
 
-
-
-
 int main() {
-SQ *q = sq_create();
 char buf[128];
 int done = 0;
+
+    printf("N: %d\n", N);
+    SQ *q = sq_create();
+    for (int i = 0; i < N; i++) {
+        sq_give_buzzer(q);
+    }
+    for (int i = J; i < N; i++) {
+        sq_take_bribe(q, i);
+    }
+    for (int i = 0; i < J; i++) {
+        
+        sq_kick_out(q, i);
+    }
+    for (int i = 0; i < N; i++) {
+        sq_seat(q);
+    }
+    sq_free(q);
+    return 0;
 
 
   printf("\nWelcome to the simple service-queue interactive program\n");
@@ -122,3 +141,7 @@ int done = 0;
   sq_free(q);
   return 0;
 }
+
+
+
+
